@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:element name="latticeboltzmann">
+        <xs:complexType>
+             <xs:sequence>
+                <xs:element name="lbconfig" maxOccurs="unbounded" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							   <xs:element name="grid" maxOccurs="1" minOccurs="1"> <xs:simpleType> <xs:restriction base="xs:string"/> </xs:simpleType> </xs:element>
+							   <xs:element name="f" maxOccurs="1" minOccurs="1"> <xs:simpleType> <xs:restriction base="xs:string"/> </xs:simpleType> </xs:element>
+                            <xs:element name="rho" maxOccurs="1" minOccurs="1"> <xs:simpleType> <xs:restriction base="xs:string"/> </xs:simpleType> </xs:element>
+                            <xs:element name="u"  maxOccurs="1" minOccurs="1"> <xs:simpleType>  <xs:restriction base="xs:string"/> </xs:simpleType> </xs:element>
+                            <xs:element name="f_eq"  maxOccurs="1" minOccurs="1"> <xs:simpleType>  <xs:restriction base="xs:string"/> </xs:simpleType> </xs:element>
+						</xs:sequence>
+						<xs:attribute name="dimension" type="Typ_dimension"/>
+						<xs:attribute name="step" type="Typ_step"/>
+						<xs:attribute name="time" type="Typ_time"/>
+						<xs:attribute name="numberlatticevectors" type="xs:integer"/>
+					</xs:complexType>
+				</xs:element>
+            </xs:sequence>
+						<xs:attribute name="lastpos" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="valuelist">
+        <xs:list itemType="posdec"/>
+    </xs:simpleType>
+    <xs:simpleType name="posdec">
+        <xs:restriction base="xs:double">
+            <xs:minInclusive value="-99999990" />
+            <xs:maxInclusive value="99999999" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Typ_dimension">
+        <xs:list itemType="xs:string"/>
+    </xs:simpleType>
+    <xs:simpleType name="Typ_step">
+        <xs:restriction base="xs:integer">
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Typ_time">
+        <xs:restriction base="xs:double">
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

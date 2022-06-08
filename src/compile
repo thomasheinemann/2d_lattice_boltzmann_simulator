@@ -1,0 +1,13 @@
+#!/bin/bash
+ 
+make clean
+rm ../obj/*.*
+rm ./bin/*.*
+
+export PATH=$PATH:/usr/include/c++/9
+/usr/lib64/qt5/bin/qmake 2d_lattice_boltzmann_sim.pro -r -spec linux-g++ CONFIG+=debug 
+
+make  -j 8
+rm moc*
+rm *~
+rm Makefile
